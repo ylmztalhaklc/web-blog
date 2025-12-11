@@ -1,0 +1,6 @@
+@NotFacebook.Api_HostAddress = http://localhost:5199
+
+GET {{NotFacebook.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

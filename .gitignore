@@ -1,0 +1,20 @@
+# Backend
+Backend/**/bin/
+Backend/**/obj/
+Backend/**/*.user
+Backend/**/*.suo
+Backend/**/.vs/
+
+# Frontend
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.env
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,355 @@
+/* ========================================
+   GİRİŞ/KAYIT SAYFASI STİLLERİ (auth.css)
+   ======================================== 
+   AuthPage bileşeni için özel stiller
+*/
+
+/* Tüm elementler için box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   ANA LAYOUT (2 Kolonlu Dizayn)
+   ======================================== */
+.auth-root {
+  height: 100vh;           /* Tam ekran yükseklik */
+  display: flex;           /* Flexbox layout */
+  color: #ffffff;          /* Beyaz metin rengi */
+  background-color: #02132b; /* Koyu mavi arka plan */
+}
+
+/* ========================================
+   SOL TARAF - Dekoratif Görsel Alan (%65)
+   ======================================== */
+.auth-left {
+  flex: 65;                /* %65 genişlik */
+  position: relative;
+  background-size: cover;  /* Resim tam kaplasın */
+  background-position: center;
+}
+
+/* Sol taraf üzerine koyu overlay katmanı */
+.auth-left-overlay {
+  position: absolute;
+  inset: 0; /* top, right, bottom, left: 0 */
+  /* Sağdan sola koyudan açığa gradient */
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+/* ========================================
+   SAĞ TARAF - Form Alanı (%35)
+   ======================================== */
+.auth-right {
+  flex: 35;                /* %35 genişlik */
+  position: relative;
+  display: flex;           /* Formı ortala */
+  align-items: center;     /* Dikey ortala */
+  justify-content: center; /* Yatay ortala */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Sağ taraf üzerine mavi overlay katmanı */
+.auth-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 41, 88, 0.92); /* Yarı saydam koyu mavi */
+}
+
+/* ========================================
+   FORM KARTI
+   ======================================== */
+.auth-card {
+  position: relative;
+  width: 85%;              /* Parent'in %85'i kadar geniş */
+  max-width: 520px;        /* Maksimum genişlik sınırı */
+  background: rgba(2, 47, 94, 0.96); /* Yarı saydam koyu mavi */
+  border-radius: 30px;     /* Yuvarlatma */
+  padding: 36px 44px 32px; /* İç boşluklar */
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65); /* Gölge efekti */
+}
+
+/* ========================================
+   BAŞLIK (notFacebook)
+   ======================================== */
+.auth-title {
+  text-align: center;  /* Ortala */
+  margin: 0 0 30px 0;  /* Alt boşluk */
+  font-size: 34px;     /* Büyük font */
+  color: #00b0ff;      /* Açık mavi renk */
+}
+
+/* ========================================
+   INPUT ALANLARI
+   ======================================== */
+/* Input grubu kapsayıcısı (input + ikon) */
+.auth-input-group {
+  position: relative;   /* İkon konumlandırma için */
+  margin-bottom: 14px;  /* Alt boşluk */
+}
+
+/* Input sol tarafındaki ikon */
+.auth-input-icon {
+  position: absolute;          /* Input içine yerleştir */
+  left: 12px;                  /* Soldan 12px içerde */
+  top: 50%;                    /* Dikey ortala */
+  transform: translateY(-50%); /* Tam ortala */
+  width: 18px;                 /* İkon boyutu */
+  height: 18px;
+  opacity: 0.9;                /* Hafif saydam */
+}
+
+/* Input alanı */
+.auth-input {
+  width: 100%;                    /* Tam genişlik */
+  padding: 12px 14px 12px 42px;   /* İç boşluklar (sol taraf ikondan dolayı fazla) */
+  border-radius: 10px;            /* Yuvarlatma */
+  border: 1px solid #043255;      /* Koyu mavi çerçeve */
+  background: #021a2f;            /* Çok koyu mavi arka plan */
+  color: #ffffff;                 /* Beyaz yazı */
+  outline: none;                  /* Varsayılan outline'u kaldır */
+  font-size: 14px;
+}
+
+/* Placeholder (boş input ipucu) rengi */
+.auth-input::placeholder {
+  color: #7f9bb8; /* Gri-mavi ton */
+}
+
+/* Input focus (tıklanınca) durumu */
+.auth-input:focus {
+  border-color: #00b0ff; /* Açık mavi çerçeve */
+}
+
+/* Select (dropdown) elemanı - input gibi görünsün */
+.auth-select {
+  appearance: none;         /* Varsayılan ok ikonunu kaldır */
+  -webkit-appearance: none; /* Safari için */
+  background-image: none;   /* Arka plan ikonunu kaldır */
+}
+
+/* ========================================
+   BUTONLAR
+   ======================================== */
+/* Ortak buton stilleri */
+.auth-button {
+  width: 100%;           /* Tam genişlik */
+  padding: 11px 0;       /* Dikey iç boşluk */
+  border-radius: 10px;   /* Yuvarlatma */
+  border: none;          /* Çerçeve yok */
+  font-weight: 600;      /* Kalın yazı */
+  font-size: 14px;
+  cursor: pointer;       /* Tıklanabilir işareti */
+  margin-top: 10px;      /* Üst boşluk */
+}
+
+/* Ana buton (Login) - Açık mavi arka plan */
+.auth-button-primary {
+  background: #00b0ff;   /* Açık mavi */
+  color: #001321;        /* Koyu yazı */
+}
+
+/* Ana buton hover (fare üzerindeyken) */
+.auth-button-primary:hover {
+  filter: brightness(1.05); /* Biraz daha parlak */
+}
+
+/* İkincil buton (Sign up) - Beyaz arka plan */
+.auth-button-secondary {
+  background: #ffffff;   /* Beyaz */
+  color: #001321;        /* Koyu yazı */
+}
+
+/* İkincil buton hover */
+.auth-button-secondary:hover {
+  filter: brightness(0.97); /* Biraz koyulaş */
+}
+
+/* ========================================
+   DIĞER ELEMANLAR
+   ======================================== */
+/* "Or" ayırıcı yazısı */
+.auth-or {
+  text-align: center;    /* Ortala */
+  margin: 14px 0 10px;   /* Üst-alt boşluk */
+  color: #a8c2dd;        /* Açık mavi-gri */
+  font-size: 13px;
+}
+
+/* Hata mesajları kutusu */
+.auth-error-box {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  background: rgba(180, 40, 40, 0.18);  /* Yarı saydam kırmızı arka plan */
+  border: 1px solid #ff6e6e;            /* Kırmızı çerçeve */
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: #ffbcbc;                       /* Açık kırmızı yazı */
+  font-size: 13px;
+}
+
+/* Hata mesajı satırları */
+.auth-error-box p {
+  margin: 2px 0; /* Minimal boşluk */
+}
+
+/* ========================================
+   RESPONSIVE TASARIM - Auth Sayfası
+   ======================================== */
+
+/* Tablet ve küçük laptop (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .auth-root {
+    flex-direction: column; /* Dikey stack */
+  }
+
+  .auth-left {
+    flex: 0 0 35vh; /* Üstte sabit 35vh yükseklik */
+    min-height: 200px;
+  }
+
+  .auth-right {
+    flex: 1; /* Kalan alan */
+    min-height: 65vh;
+  }
+
+  .auth-card {
+    width: 90%;
+    max-width: 500px;
+    padding: 28px 36px 24px;
+  }
+
+  .auth-title {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Mobil (max-width: 640px) */
+@media (max-width: 640px) {
+  .auth-left {
+    flex: 0 0 25vh; /* Daha küçük üst alan */
+    min-height: 150px;
+  }
+
+  .auth-right {
+    min-height: 75vh;
+    padding: 20px 16px;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 20px 20px;
+    border-radius: 20px;
+  }
+
+  .auth-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .auth-input-group {
+    margin-bottom: 12px;
+  }
+
+  .auth-input {
+    padding: 10px 12px 10px 38px;
+    font-size: 13px;
+  }
+
+  .auth-input-icon {
+    width: 16px;
+    height: 16px;
+    left: 10px;
+  }
+
+  .auth-button {
+    padding: 10px 0;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .auth-or {
+    margin: 12px 0 8px;
+    font-size: 12px;
+  }
+
+  .auth-error-box {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+/* Çok küçük ekranlar (max-width: 400px) */
+@media (max-width: 400px) {
+  .auth-left {
+    flex: 0 0 20vh;
+    min-height: 120px;
+  }
+
+  .auth-card {
+    padding: 20px 16px 16px;
+    border-radius: 16px;
+  }
+
+  .auth-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .auth-input {
+    padding: 9px 10px 9px 36px;
+    font-size: 12px;
+  }
+
+  .auth-input-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .auth-button {
+    padding: 9px 0;
+    font-size: 12px;
+  }
+}
+
+/* Landscape (yatay) mobil cihazlar için */
+@media (max-height: 600px) and (orientation: landscape) {
+  .auth-root {
+    flex-direction: row; /* Yan yana geri dön */
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .auth-left {
+    flex: 0 0 40%; /* Solda %40 */
+    min-height: 100vh;
+  }
+
+  .auth-right {
+    flex: 1; /* Sağda kalan */
+    padding: 20px;
+  }
+
+  .auth-card {
+    max-width: 400px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .auth-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .auth-input-group {
+    margin-bottom: 10px;
+  }
+}

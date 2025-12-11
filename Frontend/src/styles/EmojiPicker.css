@@ -1,0 +1,118 @@
+/* Emoji Picker Stilleri */
+.emoji-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.emoji-picker-container {
+  background: rgba(1, 22, 48, 0.98);
+  border-radius: 16px;
+  padding: 16px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 500px;
+  border: 1px solid rgba(0, 160, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.emoji-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.emoji-picker-header span {
+  color: #e5f0ff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.emoji-picker-close {
+  background: transparent;
+  border: none;
+  color: #e5f0ff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.emoji-picker-close:hover {
+  color: #38bdf8;
+  transform: scale(1.1);
+}
+
+.emoji-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.emoji-button {
+  background: transparent;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-button:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: scale(1.15);
+}
+
+.emoji-button:active {
+  transform: scale(0.95);
+}
+
+/* Scrollbar stilini güzelleştir */
+.emoji-picker-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.emoji-picker-grid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.emoji-picker-grid::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.4);
+  border-radius: 4px;
+}
+
+.emoji-picker-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+
+/* Responsive: Mobilde daha az kolon */
+@media (max-width: 480px) {
+  .emoji-picker-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .emoji-button {
+    font-size: 20px;
+    padding: 6px;
+  }
+}

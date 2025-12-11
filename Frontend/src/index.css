@@ -1,0 +1,27 @@
+/* ========================================
+   GLOBAL STILLER (index.css)
+   ======================================== 
+   Tüm uygulama için temel CSS ayarları
+*/
+
+/* Tüm elementler için box-sizing ayarı */
+/* border ve padding, width hesaplamasına dahil edilir */
+* {
+  box-sizing: border-box;
+}
+
+/* Sayfa kökü için tam ekran ayarları */
+html,
+body,
+#root {
+  margin: 0;    /* Dış boşlukları kaldır */
+  padding: 0;   /* İç boşlukları kaldır */
+  height: 100%; /* Tam ekran yükseklik */
+  width: 100%;  /* Tam ekran genişlik */
+}
+
+/* Body font ailesi - sistem fontları kullanılır (hızlı yükleme) */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}

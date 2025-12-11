@@ -1,0 +1,1844 @@
+/* ========================================
+   ANA SAYFA STİLLERİ (home.css)
+   ======================================== 
+   HomePage bileşeni için özel stiller
+*/
+
+/* ========================================
+   SAYFA KÖKÜ - Arka Plan
+   ======================================== */
+.home-root {
+  min-height: 100vh;          /* Minimum tam ekran yükseklik */
+  background-size: cover;     /* Arka plan resmi tam kaplasın */
+  background-position: center; /* Resim ortalansın */
+  position: relative;
+  padding-top: 40px;          /* Üst boşluk */
+  padding-bottom: 40px;       /* Alt boşluk */
+}
+
+/* ========================================
+   PROFİL KARTI (Üst Kısım)
+   ======================================== */
+.home-profile-card {
+  position: relative;
+  margin: 0 auto;             /* Yatay ortala */
+  width: 220px;               /* Sabit genişlik */
+  background: rgba(1, 22, 48, 0.96); /* Profil sayfasıyla aynı koyu solid mavi */
+  border-radius: 24px;        /* Yuvarlatma */
+  padding: 26px 18px 14px;    /* İç boşluklar */
+  text-align: center;         /* İçerik ortalansın */
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65); /* Gölge */
+  border: 1px solid rgba(0, 160, 255, 0.5);    /* Profil sayfasıyla aynı açık mavi border */
+}
+
+/* Profil avatar resmi - Kartın üstüne taşık şekilde */
+.home-profile-avatar {
+  position: absolute;          /* Kart dışına çıkarılabilir */
+  top: -42px;                  /* Kartın üstünden yukarı taş */
+  left: 50%;                   /* Yatay ortala */
+  transform: translateX(-50%); /* Tam ortala */
+  width: 85px;                 /* Büyük avatar boyutu */
+  height: 85px;
+  border-radius: 50%;          /* Tam yuvarlak */
+  object-fit: cover;           /* Resmi kare olmayan alana sığdır */
+  border: 3px solid #021a2f;   /* Koyu çerçeve */
+  background-color: #021a2f;   /* Arka plan rengi */
+}
+
+/* Profil bilgileri alanı */
+.home-profile-info {
+  margin-top: 46px; /* Avatar için boşluk bırak */
+}
+
+/* Kullanıcı adı */
+.home-profile-name {
+  font-size: 15px;
+  font-weight: 600;  /* Kalın yazı */
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+/* ========================================
+   FOLLOWÇİLER BİLGİSİ (Tooltip ile)
+   ======================================== */
+.home-profile-followers {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #e5f0ff;      /* Açık mavi beyaz */
+  position: relative;  /* Tooltip konumlandırma için */
+}
+
+/* Follower isimlerini gösteren tooltip kutusu */
+.home-profile-followers-tooltip {
+  display: none;              /* Başta gizli */
+  position: absolute;         /* Hover olduğunda görünür */
+  top: 22px;                  /* Metnin altında */
+  left: 50%;                  /* Ortala */
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85); /* Yarı saydam siyah */
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #38bdf8;  /* Açık mavi çerçeve */
+  font-size: 12px;
+  white-space: nowrap;        /* Tek satırda kalsın */
+  z-index: 10;                /* Diğer elemanların üstünde */
+}
+
+/* Tooltip içindeki her follower satırı */
+.home-profile-follower-row {
+  padding: 2px 0; /* Küçük boşluk */
+}
+
+/* Mouse üzerine gelince tooltip görünsün */
+.home-profile-followers:hover .home-profile-followers-tooltip {
+  display: block;
+}
+
+/* Çıkış butonu */
+.home-logout-btn {
+  margin-top: 6px;
+  padding: 4px 14px;
+  font-size: 12px;
+  border-radius: 999px;          /* Tam yuvarlak */
+  border: 1px solid #ff6e6e;     /* Kırmızı çerçeve */
+  background: transparent;       /* Saydam arka plan */
+  color: #ffbcbc;                /* Açık kırmızı yazı */
+  cursor: pointer;
+}
+
+/* Logout hover */
+.home-logout-btn:hover {
+  background: rgba(255, 110, 110, 0.15); /* Hafif kırmızı arka plan */
+}
+
+/* ========================================
+   ANA İÇERİK LAYOUT (2 Kolonlu Grid)
+   ======================================== */
+.home-main {
+  max-width: 1100px;              /* Maksimum genişlik */
+  margin: 36px auto 0;            /* Ortala ve üst boşluk */
+  display: grid;                  /* CSS Grid layout */
+  grid-template-columns: 1.7fr 1.2fr; /* Sol kolon daha geniş */
+  gap: 24px;                      /* Kolonlar arası boşluk */
+  align-items: flex-start;        /* Üstten hizala */
+}
+
+/* ========================================
+   SOL KOLON - Post Input ve Feed
+   ======================================== */
+.home-left-column {
+  display: flex;
+  flex-direction: column; /* Dikey sıralama */
+  gap: 18px;              /* Elemanlar arası boşluk */
+}
+
+/* ========================================
+   CSS DEĞİŞKENLER
+   ======================================== */
+/* Ortak kart arka plan rengi */
+:root {
+  --card-bg: rgba(1, 22, 48, 0.96); /* Profil sayfasıyla aynı koyu solid mavi */
+}
+
+/* ========================================
+   POST INPUT KARTI (Yeni gönderi oluşturma)
+   ======================================== */
+.home-tweet-input-card {
+  display: flex;              /* Yan yana avatar ve input */
+  background: var(--card-bg); /* CSS değişkeni kullan */
+  border-radius: 18px;
+  padding: 18px 20px;
+  align-items: flex-start;    /* Üstten hizala */
+  color: #e5f0ff;             /* Açık mavi beyaz */
+}
+
+/* Post input sol taraf avatar */
+.home-tweet-input-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;      /* Yuvarlak */
+  object-fit: cover;
+  margin-right: 14px;      /* Sağ boşluk */
+}
+
+/* Post input sağ taraf (input ve butonlar) */
+.home-tweet-input-right {
+  flex: 1; /* Kalan alanı kapla */
+}
+
+/* Input ve send butonu için üst satır */
+.home-tweet-input-top {
+  display: flex;
+  align-items: center;  /* Dikey ortala */
+  gap: 10px;            /* Aradaki boşluk */
+}
+
+/* Yeni gönderi input alanı */
+.home-tweet-input {
+  flex: 1;                 /* Kalan alanı kapla */
+  border-radius: 999px;    /* Tam yuvarlak */
+  border: none;
+  padding: 10px 16px;
+  background: #f1f5f9;     /* Açık gri arka plan */
+  font-size: 14px;
+  outline: none;
+  color: #0f172a;          /* Koyu metin */
+}
+
+.home-send-btn {
+  width: auto;
+  height: auto;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.home-send-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.1);
+}
+
+.home-send-btn .icon-emoji {
+  font-size: 24px;
+}
+
+.home-tweet-input-bottom {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-upload-btn {
+  font-size: 13px;
+  color: #3fb4ff;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.home-upload-btn:hover {
+  color: #0ea5e9;
+}
+
+.home-upload-preview-text {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+/* ========================================
+   RESİM ÖNİZLEME (Post Oluştururken)
+   ======================================== */
+/* Önizleme containerı */
+.home-image-preview-wrapper {
+  position: relative;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+/* Önizleme resmi */
+.home-image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  object-fit: contain; /* En-boy oranı korunur */
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Resmi kaldırma butonu (×) - Sağ üstte */
+.home-image-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%; /* Yuvarlak buton */
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+/* Hover efekti - Büyür ve koyulaşır */
+.home-image-remove-btn:hover {
+  background: rgb(239, 68, 68);
+  transform: scale(1.1);
+}
+
+/* Tweet list container (scrollable) */
+/* ========================================
+   POST LİSTESİ (Feed Container)
+   ======================================== */
+.home-tweet-list {
+  background: transparent;  /* Saydam arka plan */
+  max-height: 460px;        /* Maksimum yükseklik */
+  overflow-y: auto;         /* Dikey scroll */
+  padding-right: 6px;       /* Scrollbar için boşluk */
+}
+
+/* Scrollbar özelleştirme (WebKit tarayıcılar) */
+.home-tweet-list::-webkit-scrollbar {
+  width: 6px; /* İnce scrollbar */
+}
+.home-tweet-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7); /* Gri-mavi scrollbar */
+  border-radius: 999px;                 /* Yuvarlak */
+}
+
+/* ========================================
+   POST KARTI (Her bir gönderi)
+   ======================================== */
+.home-tweet-card {
+  background: rgba(1, 22, 48, 0.96);  /* Koyu solid mavi - ikinci resim gibi */
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  color: #e5f0ff;
+  border: 1px solid rgba(0, 160, 255, 0.5);  /* Belirgin açık mavi border */
+}
+
+/* Tweet header */
+.home-tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-tweet-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-tweet-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-tweet-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-tweet-author-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.home-tweet-author-desc {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+.home-tweet-time {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Tweet text */
+.home-tweet-text {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Silinmiş post stili */
+.home-tweet-text.deleted-post {
+  font-style: italic;
+  color: #94a3b8;
+  opacity: 0.7;
+  font-weight: 300;
+  text-align: center;
+  padding: 20px;
+  background: rgba(148, 163, 184, 0.05);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* Tweet image */
+.home-tweet-image-wrapper {
+  margin-top: 12px;
+}
+
+.home-tweet-image {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.home-tweet-image:hover {
+  transform: scale(1.01);
+}
+
+/* Footer (like & comment) – ikonlar düzgün */
+.home-tweet-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.home-tweet-footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.home-tweet-footer-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  transform: translateY(-1px);
+}
+
+.home-tweet-footer-btn.liked {
+  background: transparent;
+}
+
+.home-tweet-footer-btn.liked:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.home-tweet-footer-btn.liked span {
+  color: #38bdf8;
+}
+
+.home-tweet-footer-btn.liked img {
+  filter: drop-shadow(0 0 4px #38bdf8);
+}
+
+/* Emoji iconlar için genel stil */
+.icon-emoji {
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Like / comment sayı text */
+.home-tweet-footer-btn span:not(.icon-emoji) {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e5f0ff;
+  line-height: 1;
+}
+
+/* Like tooltip (kimler beğendi) */
+.home-like-tooltip {
+  position: absolute;
+  top: -32px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  color: #fff;
+  border: 1px solid #38bdf8;
+  display: none;
+  z-index: 5;
+}
+
+.home-tweet-footer-btn:hover .home-like-tooltip {
+  display: block;
+}
+
+/* ========================================
+   POST DÜZENLEME VE SİLME BUTONLARI
+   ======================================== */
+/* Edit (✏️) ve Delete (🗑️) butonları - Sadece post sahibi görür */
+.home-tweet-edit-btn,
+.home-tweet-delete-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  color: #e5f0ff;
+  font-weight: 500;
+}
+
+/* Edit butonu hover - Mavi vurgu */
+.home-tweet-edit-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  transform: scale(1.05);
+}
+
+/* Delete butonu hover - Kırmızı vurgu */
+.home-tweet-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  transform: scale(1.05);
+}
+
+/* ========================================
+   POST DÜZENLEME KUTUSU (Inline Editing)
+   ======================================== */
+/* Post içeriği düzenlenirken görünen container */
+.home-edit-post-box {
+  margin-top: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* Düzenleme textarea'sı */
+.home-edit-post-textarea {
+  width: 100%;
+  min-height: 80px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical; /* Kullanıcı yüksekliği değiştirebilir */
+}
+
+/* Focus durumunda mavi border */
+.home-edit-post-textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+/* Düzenleme input satırı (textarea + emoji) */
+.home-edit-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Düzenleme resim önizleme */
+.home-edit-image-preview {
+  position: relative;
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+.home-edit-image-preview img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.home-remove-image-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.home-remove-image-btn:hover {
+  background: rgba(220, 38, 38, 1);
+  transform: scale(1.1);
+}
+
+/* Düzenleme butonları containerı */
+.home-edit-post-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+/* Resim yükleme etiketi */
+.home-image-upload-label {
+  padding: 6px 12px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: auto;
+}
+
+.home-image-upload-label:hover {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: #38bdf8;
+}
+
+/* Save ve Cancel butonları temel stiller */
+.home-edit-save-btn,
+.home-edit-cancel-btn {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Save butonu - Mavi (onay) */
+.home-edit-save-btn {
+  background: #38bdf8;
+  color: #011630;
+}
+
+.home-edit-save-btn:hover {
+  background: #0ea5e9;
+}
+
+/* Cancel butonu - Gri (nötr) */
+.home-edit-cancel-btn {
+  background: rgba(148, 163, 184, 0.2);
+  color: #ffffff;
+}
+
+.home-edit-cancel-btn:hover {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+/* Likes & comments kutuları – avatar + isim */
+.home-likes-box,
+.home-comments-box {
+  margin-top: 8px;
+  background: rgba(0, 41, 88, 0.6);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 12px;
+  border: 1px solid rgba(0, 160, 255, 0.3);
+}
+
+.home-likes-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Likes listesi avatar + isim */
+.home-likes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-like-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-like-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-like-name {
+  font-size: 12px;
+}
+
+.home-no-comments {
+  color: #9ca3af;
+}
+
+/* Comments */
+.home-comment-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.home-comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.home-comment-content {
+  flex: 1;
+  background: rgba(0, 41, 88, 0.5);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.home-comment-user {
+  font-size: 14px;
+  font-weight: 600;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.home-comment-text-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.home-comment-text {
+  font-size: 14px;
+  color: #e5f0ff;
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Yorum düzenlendi işareti */
+.home-comment-edited {
+  font-style: italic;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+/* Yorum düzenleme butonu */
+.home-edit-comment-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.home-edit-comment-btn:hover {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+/* Yorum düzenleme kutusu */
+.home-edit-comment-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.home-edit-comment-input {
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 6px 10px;
+  background: #f1f5f9;
+  font-size: 13px;
+  outline: none;
+  color: #0f172a;
+  width: 100%;
+}
+
+.home-edit-comment-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.home-save-comment-btn,
+.home-cancel-comment-btn {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.home-save-comment-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.home-save-comment-btn:hover {
+  background: #2563eb;
+}
+
+.home-cancel-comment-btn {
+  background: rgba(148, 163, 184, 0.2);
+  color: #e5f0ff;
+}
+
+.home-cancel-comment-btn:hover {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+/* Yorum yazma alanı - dış wrapper */
+.home-comment-input-row-wrapper {
+  margin-top: 12px;
+}
+
+/* Yorum yazma satırı (avatar + input wrapper yan yana) */
+.home-comment-input-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.home-comment-avatar-input {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.home-comment-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-comment-input {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  padding: 10px 16px;
+  background: #ffffff;
+  font-size: 13px;
+  outline: none;
+  color: #1e293b;
+}
+
+.home-comment-input:focus {
+  background: #f8fafc;
+}
+
+.home-comment-input::placeholder {
+  color: #94a3b8;
+}
+
+.home-comment-send-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.home-comment-send-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.1);
+}
+
+.home-comment-send-btn .icon-emoji {
+  font-size: 18px;
+}
+
+/* Yorum resmi */
+.home-comment-image {
+  max-width: 200px;
+  max-height: 150px;
+  border-radius: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.home-comment-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Yorum resim butonu */
+.home-comment-image-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-comment-image-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.1);
+}
+
+/* Yorum resim önizleme */
+.home-comment-image-preview {
+  position: relative;
+  max-width: 150px;
+  margin-bottom: 8px;
+}
+
+.home-comment-image-preview img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.home-remove-comment-image {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.home-remove-comment-image:hover {
+  background: rgba(220, 38, 38, 1);
+  transform: scale(1.1);
+}
+
+/* Sağ kolon */
+.home-right-column {
+  display: flex;
+}
+
+/* Friends kartı */
+.home-friends-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 16px 18px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #e5f0ff;
+}
+
+/* Arama barı */
+.home-friends-search {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+}
+
+.home-friends-search-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  display: block;
+}
+
+.home-friends-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: #0f172a;
+  flex: 1;
+}
+
+/* Friends list (scrollable) */
+.home-friends-list {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Scrollbar */
+.home-friends-list::-webkit-scrollbar {
+  width: 6px;
+}
+.home-friends-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+
+.home-friend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+  width: 90%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+.home-friend-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;              /* Kalan alanı kapla */
+  min-width: 0;         /* Flexbox overflow için */
+}
+
+/* Butonları sağ tarafa yerleştir */
+.home-friend-row > .home-follow-btn,
+.home-friend-row > .home-message-btn {
+  flex-shrink: 0;       /* Butonları küçültme */
+}
+
+.home-friend-row:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(0, 150, 255, 0.35);
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: all 0.18s ease-in-out;
+}
+
+/* Avatar wrapper - Badge için relative position */
+.home-friend-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.home-friend-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-friend-name {
+  font-size: 15px;
+  text-align: center;
+  color: #e5f0ff;
+}
+
+/* Mini unread badge - Avatar sol üstünde */
+.unread-badge-mini {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid rgba(1, 22, 48, 0.96);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.home-follow-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #38bdf8;
+  background: transparent;
+  color: #e0f2fe;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.home-follow-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+/* Followed durumunda görünüm */
+.home-follow-btn.followed {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  color: #02111f;
+  font-weight: 600;
+}
+
+/* ========================================
+   MESAJLAŞMA BUTONU (Follow butonunun yanında)
+   ======================================== */
+/* 💬 emoji butonu - Mesajlaşmayı başlatmak için */
+.home-message-btn {
+  padding: 6px 12px;
+  border-radius: 999px; /* Tam yuvarlak kenarlar */
+  border: 1px solid #8b5cf6; /* Mor border */
+  background: transparent;
+  color: #e0f2fe;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  margin-left: 6px; /* Follow butonundan boşluk */
+}
+
+/* Hover efekti - Mor arka plan */
+.home-message-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+/* Gender = Other (veya bilinmiyorsa) kullanılan boş siyah avatar */
+.home-avatar-empty {
+  background-color: #000;
+  border-radius: 50%;
+  border: 3px solid #021a2f;
+}
+
+/* Küçük avatarlar için border biraz ince */
+.home-friend-avatar.home-avatar-empty,
+.home-comment-avatar.home-avatar-empty,
+.home-tweet-input-avatar.home-avatar-empty,
+.home-tweet-avatar.home-avatar-empty {
+  border-width: 2px;
+}
+
+/* ========================================
+   MESAJLAŞMA PANELİ
+   ======================================== */
+.chat-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 380px;
+  height: 500px;
+  background: rgba(1, 22, 48, 0.98);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Panel başlığı */
+.chat-panel-header {
+  padding: 14px 16px;
+  background: rgba(56, 189, 248, 0.1);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.chat-panel-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.chat-panel-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Mesajlar alanı */
+.chat-panel-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.chat-no-messages {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 50%;
+}
+
+/* Mesaj baloncukları */
+.chat-message {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.chat-message-sent {
+  align-self: flex-end;
+  background: rgba(56, 189, 248, 0.9);
+  color: #011630;
+}
+
+.chat-message-received {
+  align-self: flex-start;
+  background: rgba(30, 41, 59, 0.9);
+  color: #ffffff;
+}
+
+.chat-message-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat-message-image-wrapper {
+  margin-top: 6px;
+}
+
+.chat-message-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.chat-message-image:hover {
+  transform: scale(1.02);
+}
+
+.chat-message-time {
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* WhatsApp benzeri "(düzenlendi)" etiketi */
+.chat-message-edited {
+  font-size: 10px;
+  font-style: italic;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+/* ========================================
+   MESAJ DÜZENLEME MODU
+   ======================================== */
+/* Inline mesaj düzenleme kutusu */
+.chat-message-edit-box {
+  width: 100%;
+}
+
+/* Düzenleme textarea'sı */
+.chat-message-edit-textarea {
+  width: 100%;
+  min-height: 60px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical; /* Kullanıcı yüksekliği değiştirebilir */
+  margin-bottom: 6px;
+}
+
+.chat-message-edit-textarea:focus {
+  outline: none;
+  border-color: #38bdf8; /* Focus'ta mavi border */
+}
+
+/* Düzenleme butonları (kaydet/iptal) */
+.chat-message-edit-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* Kaydet ve İptal butonları */
+.chat-edit-save-btn,
+.chat-edit-cancel-btn {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Kaydet butonu (yeşil - onay) */
+.chat-edit-save-btn {
+  background: #10b981;
+  color: white;
+}
+
+.chat-edit-save-btn:hover {
+  background: #059669;
+}
+
+/* İptal butonu (gri - nötr) */
+.chat-edit-cancel-btn {
+  background: rgba(148, 163, 184, 0.3);
+  color: white;
+}
+
+.chat-edit-cancel-btn:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Resim önizleme - mesaj düzenleme */
+.chat-edit-image-preview-wrapper {
+  position: relative;
+  width: 150px;
+  margin-bottom: 8px;
+}
+
+.chat-edit-image-preview {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.chat-edit-image-remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.chat-edit-image-remove-btn:hover {
+  background: rgba(220, 38, 38, 1);
+}
+
+/* Resim ve emoji butonları */
+.chat-edit-image-label,
+.chat-edit-emoji-btn {
+  background: rgba(148, 163, 184, 0.2);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-edit-image-label:hover,
+.chat-edit-emoji-btn:hover {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+.chat-edit-image-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   MESAJ AKSİYONLARI (Düzenle/Sil Butonları)
+   ======================================== */
+/* Mesaj üzerine gelindiğinde görünen aksiyon butonları */
+.chat-message-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  opacity: 0; /* Başlangıçta görünmez */
+  transition: opacity 0.2s;
+}
+
+/* Mesaj üzerine gelindiğinde butonları göster (WhatsApp benzeri) */
+.chat-message:hover .chat-message-actions {
+  opacity: 1;
+}
+
+/* Düzenle (✏️) ve Sil (🗑️) butonları */
+.chat-message-action-btn {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+/* Hover efekti - buton büyür ve koyulaşır */
+.chat-message-action-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1); /* %10 büyütme efekti */
+}
+
+/* Mesaj input alanı */
+.chat-panel-input {
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.chat-image-preview-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.chat-image-preview {
+  max-width: 100%;
+  max-height: 120px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.chat-image-remove-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.chat-image-remove-btn:hover {
+  background: rgb(239, 68, 68);
+  transform: scale(1.1);
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-image-btn {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #38bdf8;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-image-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: #38bdf8;
+}
+
+.chat-input {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.chat-send-btn {
+  background: #38bdf8;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-send-btn:hover {
+  background: #0ea5e9;
+}
+
+.chat-send-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Emoji button stili */
+.emoji-trigger-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.emoji-trigger-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.1);
+}
+
+/* Tıklanabilir kullanıcı isimleri */
+.clickable-name {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clickable-name:hover {
+  color: #38bdf8 !important;
+  text-decoration: underline;
+}
+
+/* ========================================
+   RESPONSIVE TASARIM - Mobil ve Tablet
+   ======================================== */
+
+/* Tablet ve altı (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .home-main {
+    grid-template-columns: 1fr; /* Tek kolon */
+    max-width: 650px;
+    gap: 20px;
+    padding: 0 16px;
+    margin-top: 24px;
+  }
+
+  .home-right-column {
+    display: none; /* Sağ kolonu gizle (Friends listesi) */
+  }
+
+  .home-left-column {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-profile-card {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .home-tweet-input-card {
+    padding: 16px;
+  }
+
+  .chat-panel {
+    width: 90%;
+    max-width: 500px;
+    right: 5%;
+    bottom: 5%;
+  }
+}
+
+/* Mobil (max-width: 640px) */
+@media (max-width: 640px) {
+  .home-root {
+    padding: 20px 8px;
+    min-height: 100vh;
+  }
+
+  .home-main {
+    padding: 0 8px;
+    margin-top: 20px;
+    gap: 16px;
+  }
+
+  .home-profile-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 14px 10px;
+    margin: 0 auto;
+  }
+
+  .home-profile-avatar {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+  }
+
+  .home-profile-info {
+    margin-top: 38px;
+  }
+
+  .home-profile-name {
+    font-size: 18px;
+  }
+
+  .home-profile-email {
+    font-size: 12px;
+  }
+
+  .home-logout-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .home-left-column {
+    width: 100%;
+    gap: 14px;
+  }
+
+  /* Post form */
+  .home-tweet-input-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .home-tweet-input-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .home-tweet-input {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .home-tweet-input-bottom {
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .home-upload-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  /* Posts */
+  .home-tweet-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .home-tweet-header {
+    margin-bottom: 10px;
+  }
+
+  .home-tweet-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .home-tweet-author {
+    font-size: 14px;
+  }
+
+  .home-tweet-date {
+    font-size: 11px;
+  }
+
+  .home-tweet-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .home-tweet-image {
+    max-height: 300px;
+    border-radius: 10px;
+  }
+
+  .home-tweet-actions {
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  /* Chat panel */
+  .chat-panel {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .chat-header {
+    padding: 12px;
+  }
+
+  .chat-messages {
+    padding: 12px;
+  }
+
+  .chat-input-area {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .chat-input {
+    font-size: 13px;
+  }
+
+  /* Comments */
+  .home-comment-item {
+    padding: 10px;
+  }
+
+  .home-comment-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .home-comment-author {
+    font-size: 13px;
+  }
+
+  .home-comment-text {
+    font-size: 13px;
+  }
+
+  .home-comment-inline-input {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+}
+
+/* Çok küçük ekranlar (max-width: 400px) */
+@media (max-width: 400px) {
+  .home-root {
+    padding: 16px 6px;
+  }
+
+  .home-main {
+    padding: 0 6px;
+    gap: 12px;
+  }
+
+  .home-profile-card {
+    padding: 18px 10px 8px;
+    border-radius: 18px;
+  }
+
+  .home-tweet-input-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .home-tweet-input-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+  }
+
+  .home-tweet-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .home-tweet-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .chat-panel {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .emoji-picker-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .home-tweet-input {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .home-upload-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* Landscape mobil için özel düzenleme */
+@media (max-height: 600px) and (orientation: landscape) {
+  .home-root {
+    padding: 10px;
+  }
+
+  .home-profile-card {
+    max-width: 280px;
+    padding: 16px 12px 8px;
+  }
+
+  .home-profile-avatar {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+  }
+
+  .home-main {
+    margin-top: 16px;
+    gap: 12px;
+  }
+
+  .chat-panel {
+    max-height: 90vh;
+  }
+}
