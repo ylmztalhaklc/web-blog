@@ -28,10 +28,34 @@ A full-stack social media application built with .NET Core backend and React fro
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
-- [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) or later
-- [Node.js](https://nodejs.org/) (v18 or later)
-- [SQL Server](https://www.microsoft.com/sql-server) (LocalDB, Express, or Full Edition)
-- A code editor (Visual Studio, VS Code, or Rider)
+
+### Required Software
+- **[.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)** or later
+- **[Node.js](https://nodejs.org/)** v18 or later (includes npm)
+- **[SQL Server](https://www.microsoft.com/sql-server)** - LocalDB, Express, or Full Edition
+- **Git** - For version control
+- A code editor: **Visual Studio 2022**, **VS Code**, or **JetBrains Rider**
+
+### Backend Dependencies (Automatically restored)
+- Entity Framework Core 8.0
+- ASP.NET Core Identity
+- Microsoft.Data.SqlClient
+
+### Frontend Dependencies (Automatically installed)
+```json
+{
+  "dependencies": {
+    "axios": "^1.13.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4",
+    "eslint": "^9.39.1"
+  }
+}
+```
 
 ## 🔧 Installation & Setup
 
@@ -48,8 +72,20 @@ cd web-blog
 cd Backend
 ```
 
+#### Restore NuGet Packages
+This will download all .NET dependencies defined in `.csproj` files:
+```bash
+dotnet restore
+```
+
+**Key packages that will be restored:**
+- `Microsoft.EntityFrameworkCore` - ORM for database access
+- `Microsoft.EntityFrameworkCore.SqlServer` - SQL Server provider
+- `Microsoft.EntityFrameworkCore.Tools` - Migration tools
+- `Microsoft.AspNetCore.Identity.EntityFrameworkCore` - Authentication
+
 #### Update Connection String
-Open `NotFacebook.Api/appsettings.json` and update the connection string:
+Open `NotFacebook.Api/appsettings.json` and update the connection string for your SQL Server:
 ```json
 {
   "ConnectionStrings": {
@@ -58,23 +94,32 @@ Open `NotFacebook.Api/appsettings.json` and update the connection string:
 }
 ```
 
-#### Restore Dependencies
-```bash
-dotnet restore
-```
+**Connection string options:**
+- LocalDB: `Server=(localdb)\\mssqllocaldb;Database=NotFacebookDb;Trusted_Connection=true;`
+- SQL Server Express: `Server=localhost\\SQLEXPRESS;Database=NotFacebookDb;Trusted_Connection=true;`
+- SQL Server with credentials: `Server=localhost;Database=NotFacebookDb;User Id=sa;Password=YourPassword;`
 
 #### Apply Database Migrations
+Navigate to the API project and create the database:
 ```bash
 cd NotFacebook.Api
 dotnet ef database update
 ```
 
-#### Run the Backend
+This will create the database and all tables based on the migration files.
+
+#### Run the Backend API
 ```bash
 dotnet run
 ```
 
-The API will start at `https://localhost:7000` (or the port specified in `launchSettings.json`)
+The API will start at `https://localhost:7000` (or check `Properties/launchSettings.json` for the exact port)
+
+#### Verify Backend is Running
+Open browser or use curl:
+```bash
+curl https://localhost:7000/api/account/test
+```
 
 ### 3. Frontend Setup
 
@@ -83,10 +128,18 @@ The API will start at `https://localhost:7000` (or the port specified in `launch
 cd Frontend
 ```
 
-#### Install Dependencies
+#### Install Node.js Dependencies
+This will install all packages listed in `package.json`:
 ```bash
 npm install
 ```
+
+**Packages that will be installed:**
+- `react` & `react-dom` - Core React library
+- `react-router-dom` - Client-side routing
+- `axios` - HTTP client for API calls
+- `vite` - Build tool and dev server
+- `eslint` - Code linting
 
 #### Update API Base URL (if needed)
 Open `src/api/api.js` and verify the base URL matches your backend:
@@ -94,12 +147,18 @@ Open `src/api/api.js` and verify the base URL matches your backend:
 const API_BASE_URL = 'https://localhost:7000';
 ```
 
-#### Run the Frontend
+#### Run the Frontend Development Server
 ```bash
 npm run dev
 ```
 
 The application will start at `http://localhost:5173`
+
+#### Available npm Scripts
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Check code quality with ESLint
 
 ## 🎯 Usage
 
